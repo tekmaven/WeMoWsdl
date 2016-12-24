@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:u="urn:Belkin:service:insight:1">
+
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Belkin:service:insight:1">
+      <xsd:element name="GetInsightParams">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetInsightParamsResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="InsightParams" type="xsd:string" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="GetInsightParamsInputMessage">
+    <wsdl:part name="GetInsightParamsInputPart" element="u:GetInsightParams"/>
+  </wsdl:message>
+  <wsdl:message name="GetInsightParamsOutputMessage">
+    <wsdl:part name="GetInsightParamsOutputPart" element="u:GetInsightParamsResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="BasicServicePortType">
+    <wsdl:operation name="GetInsightParams">
+      <wsdl:input message="GetInsightParamsInputMessage"/>
+      <wsdl:output message="GetInsightParamsOutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="BasicServiceBinding" type="BasicServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetInsightParams">
+      <soap:operation soapAction="urn:Belkin:service:insight:1#GetInsightParams"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="BasicService">
+    <wsdl:port name="BasicServicePort" binding="BasicServiceBinding">
+      <soap:address location="http://localhost:49153/upnp/control/insight1"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
