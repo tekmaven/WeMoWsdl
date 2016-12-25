@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:u="urn:Belkin:service:insight:1">
+                  xmlns:un="urn:Belkin:service:insight:1"
+                  xmlns:u="urn:Belkin:service:metainfo:1">
 
   <wsdl:types>
-    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Belkin:service:metainfo:1">
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Belkin:service:insight:1">
       <xsd:element name="GetInsightParams">
         <xsd:complexType>
           <xsd:sequence/>
         </xsd:complexType>
       </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Belkin:service:metainfo:1">
       <xsd:element name="GetInsightParamsResponse">
         <xsd:complexType>
           <xsd:all>
@@ -21,7 +24,7 @@
   </wsdl:types>
 
   <wsdl:message name="GetInsightParamsInputMessage">
-    <wsdl:part name="GetInsightParamsInputPart" element="u:GetInsightParams"/>
+    <wsdl:part name="GetInsightParamsInputPart" element="un:GetInsightParams"/>
   </wsdl:message>
   <wsdl:message name="GetInsightParamsOutputMessage">
     <wsdl:part name="GetInsightParamsOutputPart" element="u:GetInsightParamsResponse"/>
